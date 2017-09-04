@@ -1,0 +1,69 @@
+<ion-header>
+   <ion-navbar color="primary" align-title="center">
+    <ion-title class="title">
+       User
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="user-content" padding>
+    
+    <form #form="ngForm" (ngSubmit)="save()" novalidate>
+      <ion-list class>
+        <!-- Name -->
+        <ion-item class="login-item">
+          <ion-label floating>Name</ion-label>
+          <ion-input type="text" name="name" required [(ngModel)]="user.name"></ion-input>
+        </ion-item>
+        <ion-item class="error-message,login-item" *ngIf="user.name && user.name.errors?.required && user.name.dirty">
+          Please inform a valid name
+        </ion-item>
+
+        <!-- E-mail -->
+        <ion-item class="login-item">
+          <ion-label floating>E-mail</ion-label>
+          <ion-input type="email" name="email" required email [(ngModel)]="user.email"
+                    [class.invalid]="user.email && user.email.errors && user.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="user.email && user.email.errors?.required && user.email.dirty">
+          Inform the E-mail
+        </ion-item>
+        <ion-item class="error-message,login-item" *ngIf="user.email && user.email.errors?.email && user.email.dirty">
+          You have to inform a valid E-mail
+        </ion-item>
+
+        <!-- Notifications -->
+        <ion-item>
+          <ion-label floating>Notifications</ion-label>
+          <ion-select interface="action-sheet" name="notifications" required [(ngModel)]="user.notifications"
+                    [class.invalid]="user.notifications && user.notifications.errors && user.notifications.dirty">
+            <ion-option value="enable">Enable</ion-option>
+            <ion-option value="mute">Mute</ion-option>
+            <ion-option value="mute_week">Mute for a week</ion-option>
+            <ion-option value="mute_year" (ionSelect)="notificationSelect($event)">Mute for a year</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Valid To -->
+        <ion-item>
+          <ion-label floating>Valid to</ion-label>
+          <ion-datetime name="validTo" required displayFormat="MMM DD YYYY" [(ngModel)]="user.validTo">
+                        [class.invalid]="user.validTo.errors && user.validTo.dirty"</ion-datetime>
+        </ion-item>
+
+        <!-- Username -->
+        <ion-item class="login-item">
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" name="username" ngModel required [(ngModel)]="user.username"
+                    [class.invalid]="user.username.errors && user.username.dirty"></ion-input>
+        </ion-item>
+
+        <div padding>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <button type="submit" ion-button class="submit-btn" color="primary" full [disabled]="!form.valid">Save</button>
+        </div>
+
+      </ion-list>
+    </form>
+    
+</ion-content>

@@ -1,0 +1,31 @@
+page-signup {
+    .signup-content {
+            background-image: url('https://placeimg.com/640/480/tech/grayscale');
+            background-repeat: no-repeat;
+            @media screen and (orientation: portrait) {
+                background-size: auto 100%;
+            }
+            @media screen and (orientation: landscape) {
+                background-size: 100% auto;
+            }
+    }
+
+    .signup-box {
+            position: relative;
+            z-index: 1;
+            padding: 10px 10px 0px 10px;
+            margin-top: 30px;
+        }
+        .signup-box .bg {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: lightgray;
+            opacity: .6;
+            width: 100%;
+            height: 100%;
+        }
+}

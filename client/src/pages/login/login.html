@@ -1,0 +1,45 @@
+<ion-content class="login-content" padding>
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <div class="img-circular"></div>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <div class="bg"></div>
+    <form #form="ngForm" (ngSubmit)="login(form.value)" novalidate>
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            
+            <ion-item>
+              <ion-label inset>
+                <ion-icon name="contact"></ion-icon>
+              </ion-label>
+              <ion-input placeholder="Username" class="item item-icon-left item-icon-right"  type="text" name="username" ngModel required #username="ngModel"
+                   [class.invalid]="username.errors && username.dirty"></ion-input>
+            </ion-item>
+            
+            <ion-item>
+              <ion-label inset>
+                <ion-icon name="lock"></ion-icon>
+              </ion-label>
+              <ion-input placeholder="Password" type="password" name="password" ngModel required #password="ngModel"
+                   [class.invalid]="password.errors && password.dirty"></ion-input>
+            </ion-item>
+            
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col class="signup-col">
+          <button type="submit" ion-button class="submit-btn" color="primary" full type="submit" [disabled]="!form.valid">Login</button>
+          <button type="button" ion-button class="register-btn" block clear (click)="signup()">Create New Account</button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+  </div>
+</ion-content>

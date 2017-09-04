@@ -1,0 +1,14 @@
+app:
+  secret: jwt_secret
+  token-validity-in-seconds: 18000000
+
+security:
+  ignored:
+    - none
+
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  resources:
+    add-mappings: false
